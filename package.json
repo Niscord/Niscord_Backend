@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "express server for Niscord",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon ./server/server.js --exec babel-node"
+  },
+  "author": "KyumKyum",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/node": "^7.20.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.21.5",
+    "babel-loader": "^9.1.2",
+    "prisma": "^4.13.0"
+  }
+}

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "dev": "nodemon ./server/server.js --exec babel-node"
+    "dev": "nodemon ./src/server/server.js --exec babel-node"
   },
   "author": "KyumKyum",
   "license": "ISC",
@@ -22,6 +22,8 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.21.5",
     "babel-loader": "^9.1.2",
-    "prisma": "^4.13.0"
+    "prisma": "^4.13.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
   }
 }

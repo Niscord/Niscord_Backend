@@ -9,3 +9,33 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id       Int       @id @unique @default(autoincrement())
+  username String
+  ident    String    @unique
+  password String
+  hosting  Room[]    @relation("Hosting")
+  joining  Room[]    @relation("Joining")
+  message  Message[]
+}
+
+model Room {
+  id        Int       @id @unique @default(autoincrement())
+  hostId    Int
+  host      User      @relation("Hosting", fields: [hostId], references: [id])
+  member    User[]    @relation("Joining")
+  message   Message[]
+  roomCode  String    @unique
+  createdAt DateTime  @default(now())
+}
+
+model Message {
+  id        Int      @id @unique @default(autoincrement())
+  senderId  Int
+  roomId    Int
+  sender    User     @relation(fields: [senderId], references: [id])
+  room      Room     @relation(fields: [roomId], references: [id])
+  payload   String
+  createdAt DateTime @default(now())
+}

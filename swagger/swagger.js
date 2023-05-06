@@ -12,7 +12,7 @@ const options = {
       },
     ],
   },
-  apis: ['./src/server/route/*/*.js'],
+  apis: ['./src/server/route/*/*.js', './swagger/*.yml'],
 }
 
 export default options;

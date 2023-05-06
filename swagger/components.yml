@@ -1,0 +1,14 @@
+components: 
+  schemas: 
+    Room: 
+      type: object
+      descrption: Shows room info
+      properties:
+        id: 
+          type: integer
+        hostId: 
+          type: integer
+        roomCode:
+          type: string
+        createdAt:
+          type: Date

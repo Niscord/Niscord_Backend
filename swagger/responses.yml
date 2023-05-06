@@ -1,0 +1,27 @@
+components:
+  schemas:
+  #---ResponseRoom---#
+    ResponseRoom:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          description: Indicates response result
+        error:
+          type: string
+          description: Shows error if there are some errors
+        room:
+          $ref: '#/components/schemas/Room'
+  #---ResponseLogin---#
+    ResponseLogin: 
+      type: object
+      properties:
+        ok: 
+          type: boolean
+          description: Indicates response result
+        error: 
+          type: string
+          description: Shows error if there are some errors
+        token:
+          type: string
+          descrption: JWT token for logined user. It needed to be saved in cookie.

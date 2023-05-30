@@ -12,6 +12,18 @@ components:
           description: Shows error if there are some errors
         room:
           $ref: '#/components/schemas/Room'
+  #---ResponseRoom---#
+    ResponseRoomList:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          description: Indicates response result
+        error:
+          type: string
+          description: Shows error if there are some errors
+        data:
+          $ref: '#/components/schemas/RoomList'
   #---ResponseLogin---#
     ResponseLogin: 
       type: object
@@ -22,6 +34,19 @@ components:
         error: 
           type: string
           description: Shows error if there are some errors
-        token:
+        userId:
+          type: integer
+          descrption: User's unique id.
+        userName:
           type: string
-          descrption: JWT token for logined user. It needed to be saved in cookie.
+          description: User's name in current service.
+  #---ResponseChat---#
+    ResponseChat:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          description: Indicates response result
+        error:
+          type: string
+          description: Shows error if there are some errors

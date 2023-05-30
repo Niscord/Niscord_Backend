@@ -1,9 +1,15 @@
 //* Niscord: Backend
-import express from "express";
+import express, { json } from "express";
 import { mainRouter } from "./route/route";//* Router Import
+import {createServer} from 'http';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from "swagger-jsdoc";
+import cors from 'cors';
 import options from "../../swagger/swagger";
+import { Server } from "socket.io";
+import { webSock } from "./ws/webSocket";
+
+
 const dotenv = require("dotenv").config();
 
 const app = express();
@@ -16,10 +22,17 @@ const MODE = process.env.MODE;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.set('trust proxy', 1);
+app.use(cors({ origin: '*' }), json());
+
 app.use('/', mainRouter);
 
 //* Swagger Docs Endpoint
 app.use('/', swaggerUi.serve, swaggerUi.setup(specs, {explorer: true}));
+
+//* web socket
+const server = createServer(app);
+webSock(server);
 
 app.listen(PORT, () => {
   MODE === 'DEV' 

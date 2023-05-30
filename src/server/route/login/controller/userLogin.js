@@ -29,7 +29,8 @@ export const userLogin = async (req, res) => {
     //* Login successful
     res.json({
       ok: true,
-      token: 'test'
+      userId: user?.id,
+      userName: user?.username
     });
     
 

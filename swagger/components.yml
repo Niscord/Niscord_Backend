@@ -12,3 +12,27 @@ components:
           type: string
         createdAt:
           type: Date
+    RoomList: 
+      type: array
+      descrption: Shows room info
+      items:
+        type: object
+        properties:
+          id: 
+            type: integer
+          hostId: 
+            type: integer
+          roomCode:
+            type: string
+          createdAt:
+            type: Date
+    Message:
+      type: object
+      description: Message object
+      properties:
+        senderId:
+          type: integer
+        roomId:
+          type: integer
+        payload: 
+          type: string

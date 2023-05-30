@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { roomCreate } from "./controller/roomCreate";
 import { roomJoin } from "./controller/roomJoin";
+import { roomQuery } from "./controller/roomQuery";
 
 /**
  * @swagger
@@ -65,4 +66,31 @@ roomRouter.post('/create', roomCreate);
  *             $ref: '#/components/schemas/ResponseRoom'
  */
 roomRouter.post('/join', roomJoin);
+
+/** 
+ * @swagger
+ *  /room/query:
+ *    post:
+ *      tags:
+ *      - Room
+ *      description: Room List Query
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *      - in: body
+ *        name: body
+ *        required: true
+ *        schema:
+ *         properties:
+ *          hostId:
+ *            type: integer
+ *      responses:
+ *       200:
+ *        description: Successful Room Query
+ *        content:
+ *          application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ResponseRoomList'
+ */
+roomRouter.post('/query', roomQuery);
 

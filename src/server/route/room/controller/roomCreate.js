@@ -49,6 +49,11 @@ export const roomCreate = async (req, res) => {
           connect: {
             id: room?.id,
           }
+        },
+        joining: {
+          connect: {
+            id: room?.id,
+          }
         }
       }
     });

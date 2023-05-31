@@ -26,6 +26,8 @@ components:
             type: string
           createdAt:
             type: Date
+          memeber: 
+            type: object
     Message:
       type: object
       description: Message object

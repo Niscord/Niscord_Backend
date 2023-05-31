@@ -2,6 +2,7 @@ import { Router } from "express";
 import { roomCreate } from "./controller/roomCreate";
 import { roomJoin } from "./controller/roomJoin";
 import { roomQuery } from "./controller/roomQuery";
+import { roomInvite } from "./controller/roomInvite";
 
 /**
  * @swagger
@@ -94,3 +95,34 @@ roomRouter.post('/join', roomJoin);
  */
 roomRouter.post('/query', roomQuery);
 
+/** 
+ * @swagger
+ *  /room/query:
+ *    post:
+ *      tags:
+ *      - Room
+ *      description: Room List Query
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *      - in: body
+ *        name: body
+ *        required: true
+ *        schema:
+ *         properties:
+ *          username:
+ *            type: string,
+ *          roomId:
+ *            type: integer,
+ *      responses:
+ *       200:
+ *        description: Successful Room Query
+ *        content:
+ *          application/json:
+ *           schema:
+ *             ok: 
+ *               type: boolean
+ *             error:
+ *               type: string
+ */
+roomRouter.post('/invite', roomInvite);

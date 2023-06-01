@@ -1,7 +1,6 @@
 import client from "../../../../../database/client"
 import { ws } from "../../../ws/webSocket";
 import { isValid } from "../../../../utils/isValid";
-import { Client } from "@stomp/stompjs";
 
 export const sendChat = async (req, res) => {
 
@@ -35,8 +34,7 @@ export const sendChat = async (req, res) => {
     }
 
     //* Save Data
-
-    await client.message.create({
+    const message = await client.message.create({
       data: {
         sender: {
           connect: {
@@ -56,6 +54,7 @@ export const sendChat = async (req, res) => {
 
     res.json({
       ok: true,
+      message
     });
 
   }catch (e){

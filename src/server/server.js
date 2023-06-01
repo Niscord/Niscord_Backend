@@ -6,8 +6,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from "swagger-jsdoc";
 import cors from 'cors';
 import options from "../../swagger/swagger";
-import { Server } from "socket.io";
-import { webSock } from "./ws/webSocket";
+import { handleSocketConnection, webSock, webSockInit } from "./ws/webSocket";
 
 
 const dotenv = require("dotenv").config();
@@ -16,6 +15,7 @@ const app = express();
 const specs = swaggerJSDoc(options); //* Swagger Options
 
 const PORT = process.env.PORT;
+const WSPORT = process.env.WSPORT;
 const MODE = process.env.MODE;
 
 //* Server Setting
@@ -32,7 +32,13 @@ app.use('/', swaggerUi.serve, swaggerUi.setup(specs, {explorer: true}));
 
 //* web socket
 const server = createServer(app);
-webSock(server);
+const ws = webSockInit(server);
+
+ws.listen(WSPORT, () => {
+  console.log("WebSocket Listening\n");
+})
+
+handleSocketConnection(ws);
 
 app.listen(PORT, () => {
   MODE === 'DEV' 

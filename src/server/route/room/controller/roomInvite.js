@@ -44,7 +44,6 @@ export const roomInvite = async (req, res) => {
     });
     
   }catch (e){
-    console.log(e.message)
     res?.json({
       ok: false,
       error: e.message

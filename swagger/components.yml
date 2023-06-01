@@ -38,3 +38,14 @@ components:
           type: integer
         payload: 
           type: string
+    User:
+      type: object
+      properties:
+        id: 
+          type: integer
+        username: 
+          type: string
+        ident:
+          type: string
+        password:
+          type: string

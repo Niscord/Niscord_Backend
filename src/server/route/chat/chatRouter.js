@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { sendChat } from "./controller/sendChat";
+import { readRoomChat } from "./controller/readRoomChat";
 
 /**
  * @swagger
@@ -33,3 +34,5 @@ export const chatRouter = Router();
  *             $ref: '#/components/schemas/ResponseChat'
  */
 chatRouter.post('/send', sendChat);
+
+chatRouter.post('/read', readRoomChat);

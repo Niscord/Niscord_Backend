@@ -1,29 +1,26 @@
-import { Server } from "socket.io"
+import socketIO, { Server } from "socket.io"
 
-export const webSock = (server) => {
-  const ws = new Server(server);
+export const webSockInit = (server) => {
+  const ws = socketIO(server, {
+    cors: {
+      origin: "*",
+    }
+  });
 
-  console.log("TEST")
+  return ws;
+}
 
-  ws.on('connection', (socket) => {
-    //* receive order and broadcast ut
+export const handleSocketConnection = (ws) => {
 
-    socket.on('join', () => { //* Receives join event
-      console.log('connected');
-      socket?.removeListener('join', () => {
-          console.log('removed join')
-      } )
+  ws.on("connection", socket => {
+    console.log("Socket Connected!");
+
+    socket.on('message', (message) => {
+      console.log(message);
+
+      socket.broadcast.emit('recv_message', message);
+
     })
 
-
-    socket.once('recv_chat', (message) => {
-        // once(io?.to(String(cancel?.shopId)).emit('cancel', {
-        //     ...cancel
-        // }));
-        console.log(message);
-        socket?.removeListener('recv_chat',() => {
-            console.log('removed cancel');
-        })
-    });
-});
+  })
 }

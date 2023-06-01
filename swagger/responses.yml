@@ -50,3 +50,17 @@ components:
         error:
           type: string
           description: Shows error if there are some errors
+#---ResponseInvite---#
+    ResponseInvite:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          description: Indicates response result
+        error:
+          type: string
+          description: Shows error if there are some errors
+        member:
+          type: array
+          items:
+             $ref: '#/components/schemas/User'

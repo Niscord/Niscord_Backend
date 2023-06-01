@@ -97,7 +97,7 @@ roomRouter.post('/query', roomQuery);
 
 /** 
  * @swagger
- *  /room/query:
+ *  /room/invite:
  *    post:
  *      tags:
  *      - Room
@@ -111,18 +111,15 @@ roomRouter.post('/query', roomQuery);
  *        schema:
  *         properties:
  *          username:
- *            type: string,
+ *            type: string
  *          roomId:
- *            type: integer,
+ *            type: integer
  *      responses:
  *       200:
  *        description: Successful Room Query
  *        content:
  *          application/json:
  *           schema:
- *             ok: 
- *               type: boolean
- *             error:
- *               type: string
+ *             $ref: '#/components/schemas/ResponseInvite'
  */
 roomRouter.post('/invite', roomInvite);

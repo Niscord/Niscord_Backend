@@ -58,9 +58,18 @@ export const roomCreate = async (req, res) => {
       }
     });
 
+    const elem = await client.room.findFirst({
+      where: {
+        id: room?.id
+      },
+      include: {
+        member: true
+      }
+    });
+
     res.json({
       ok: true,
-      room
+      room: elem
     });
     
   }catch(e){

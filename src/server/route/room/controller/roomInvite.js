@@ -38,6 +38,8 @@ export const roomInvite = async (req, res) => {
       }
     });
 
+    console.log(member);
+
     res?.json({
       ok: true,
       member

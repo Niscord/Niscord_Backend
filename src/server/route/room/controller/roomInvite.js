@@ -10,6 +10,22 @@ export const roomInvite = async (req, res) => {
   try{
     //* Search such user.
 
+    //* Exception: If current room is already full
+    //* Abort this request and return error.
+    const members = await client.room.findFirst({
+      where: {
+        id: roomId
+      },
+      select: {
+        member: true
+      }
+    });
+    
+    if(members.member.length >= 6){
+      throw new Error("Full");
+    }
+
+
     const user = await client.user.findFirst({
       where: {
         username
@@ -37,8 +53,6 @@ export const roomInvite = async (req, res) => {
         }
       }
     });
-
-    console.log(member);
 
     res?.json({
       ok: true,
